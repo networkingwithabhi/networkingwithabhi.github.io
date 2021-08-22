@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>html on networkingwithabhi</title>
-    <link>https://networkingwithabhi.github.io/tags/html/</link>
-    <description>Recent content in html on networkingwithabhi</description>
+    <title>web-hosting on networkingwithabhi</title>
+    <link>https://networkingwithabhi.github.io/categories/web-hosting/</link>
+    <description>Recent content in web-hosting on networkingwithabhi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2021, abhi mukherjee; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 22 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/categories/web-hosting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Did I Developed This Site</title>
       <link>https://networkingwithabhi.github.io/post/markdown-syntax/</link>
