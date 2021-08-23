@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on networkingwithabhi</title>
-    <link>https://networkingwithabhi.github.io/post/</link>
-    <description>Recent content in Posts on networkingwithabhi</description>
+    <title>Python on networkingwithabhi</title>
+    <link>https://networkingwithabhi.github.io/tags/python/</link>
+    <description>Recent content in Python on networkingwithabhi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2021, abhi mukherjee; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NSX-V Interface Details Using Python: Explained</title>
       <link>https://networkingwithabhi.github.io/post/nsx-v-interface-details-using-python-explained/</link>
@@ -166,67 +166,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;, inside the &lt;code&gt;main()&lt;/code&gt; function only we are taking user input for NSX_Manager IP, username and password when user is running this program.&lt;/p&gt;
 &lt;p&gt;And that&#39;s it!&lt;/p&gt;
 &lt;p&gt;The entire script can be found in this &lt;a href=&#34;https://github.com/abhimukherjee91/network-automation-examples/blob/main/network-automation-examples/NSX-V/NSX_Edge_Interface_Details.py&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
-        
-      </description>
-    </item>
-    
-    <item>
-      <title>How Did I Developed This Site</title>
-      <link>https://networkingwithabhi.github.io/post/how-i-developed-this-site/</link>
-      <pubDate>Sun, 22 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://networkingwithabhi.github.io/post/how-i-developed-this-site/</guid>
-      <description>
-        
-          &lt;p&gt;This article describes how I created this website and hosted it freely.&lt;/p&gt;
-&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
-&lt;p&gt;Whenever we hear the term ‘blog’, we think of wordpress or similar types of platforms. There is no problem with hosting your blog or website on them, but in terms of design or customization the options are very limited over there. Now being a networking guy I had no idea of how to create a static website and host it freely. The idea came from one of &lt;a href=&#34;https://www.ipspace.net/Main_Page&#34;&gt;Ivan Pepelnjak&lt;/a&gt;’s interviews, whom I deeply admire.&lt;/p&gt;
-&lt;h2 id=&#34;tools-required&#34;&gt;Tools Required&lt;/h2&gt;
-&lt;p&gt;The tools used for this site are &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; and &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt;. Through Hugo I generated the codes for this website while via Github I maintained the repository and ultimately hosted the website.&lt;/p&gt;
-&lt;h4 id=&#34;installing-git-and-setup-github&#34;&gt;Installing Git And Setup Github&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;First, please install &lt;a href=&#34;https://git-scm.com/book/en/v2/Getting-Started-Installing-Git&#34;&gt;git&lt;/a&gt; appropriate to your OS.&lt;/li&gt;
-&lt;li&gt;Create a Github account with the exact name that you will be using your website name. &lt;strong&gt;Note&lt;/strong&gt;, this point is very important as to host a  website via github, the website name has to be the same as the github account name and the repository name.&lt;/li&gt;
-&lt;li&gt;After creating the account, login to github and create a public repository as the same name that you have used as account name/website name. By this way your website URL would be &lt;code&gt;public-repositary-name.github.io&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;installing-hugo&#34;&gt;Installing Hugo&lt;/h4&gt;
-&lt;p&gt;To install and set up your pc for Hugo, please use their &lt;a href=&#34;https://gohugo.io/getting-started/installing/&#34;&gt;documentation&lt;/a&gt;. Like, I am using linux mint, so I have used &lt;a href=&#34;https://docs.brew.sh/Installation&#34;&gt;brew&lt;/a&gt; to install Hugo.&lt;/p&gt;
-&lt;h2 id=&#34;develop-the-site&#34;&gt;Develop The Site&lt;/h2&gt;
-&lt;p&gt;To build the website now first create a directory and create a new site with hugo inside that directory.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mkdir yourSiteName
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;cd yourSiteName
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;hugo new site yourSiteName
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;cd yourSiteName
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git init
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;choose-a-theme&#34;&gt;Choose A Theme&lt;/h4&gt;
-&lt;p&gt;Browse through the themes &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;catalog&lt;/a&gt; and select a theme. Clone the repository of that theme inside the &lt;code&gt;themes&lt;/code&gt; directory of your site.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git submodule add &amp;lt;github-link-of-the-theme-repository&amp;gt; themes/&amp;lt;theme-name&amp;gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;cp -a themes/&amp;lt;theme-name&amp;gt;/exampleSite/* .
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After this, you will need to edit the content of the files inside your site directory as per your need. This below tutorial is a great playlist to learn how to develop sites using Hugo.&lt;/p&gt;
-
-&lt;div class=&#34;video&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/u53xfby0EYI?controls=1&amp;rel=0&#34; loading=&#34;lazy&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&#34;host-the-site-locally&#34;&gt;Host The Site Locally&lt;/h4&gt;
-&lt;p&gt;Before publishing you can host the site locally via Hugo. Actually it is more easy to develop the site while keeping it hosted locally as any change to the files makes instant change on the site as well.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd yourSiteName
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;hugo serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To connect to the locally hosted site, browse to the link &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;build-the-site&#34;&gt;Build The Site&lt;/h2&gt;
-&lt;p&gt;Once the the devlopment is completed, to generate the files that you will need to upload to any hosting platform(in our case Github) please use the below code.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now you will see that a directory named &lt;code&gt;public&lt;/code&gt; has been generated inside your site directory. This directory contains all the files that you will need for hosting.&lt;/p&gt;
-&lt;h2 id=&#34;upload-the-files-in-github-repository&#34;&gt;Upload The Files In Github Repository&lt;/h2&gt;
-&lt;p&gt;The easiest way to maintain the site is to add the &lt;code&gt;public&lt;/code&gt; directory as submodule with your public Github repository. We can do that by,&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd yourSiteName
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git submodule add -b main https://&amp;lt;url-of-your-public-repository&amp;gt; public
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and then, go inside the &lt;code&gt;public&lt;/code&gt; directory and push it to your public github repository.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd public
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git add .
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git commit -m &amp;#34;Uploading the website&amp;#34;
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git push -u origin main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And that&#39;s it, your website is up and ready on the internet. Visit it at: &lt;code&gt;https://yourSiteName.github.io&lt;/code&gt;&lt;/p&gt;
         
       </description>
     </item>
