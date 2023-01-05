@@ -7,7 +7,60 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2021, abhi mukherjee; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://networkingwithabhi.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Push a JSON-Formatted NSX-ALB (Formerly AVI) Config File to the NSX-ALB Controller</title>
+      <link>https://networkingwithabhi.github.io/post/avi_config_upload/</link>
+      <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://networkingwithabhi.github.io/post/avi_config_upload/</guid>
+      <description>
+        
+          &lt;p&gt;This article describes the &#39;how-to&#39; push JSON formatted NSX-ALB config to NSX-ALB Controller&lt;/p&gt;
+&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
+&lt;p&gt;This article and the python script that is provided here will come in handy in case,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You are working on a load balancer migration project where your source is f5 or ACE or Netscalar and your target is NSX-ALB (formerly known as AVI Networks).&lt;/li&gt;
+&lt;li&gt;You have used the VMware provided &lt;a href=&#34;https://github.com/avinetworks/sdk/tree/master/python/avi/migrationtools&#34;&gt;migration-tool&lt;/a&gt; to convert your source LB config.&lt;/li&gt;
+&lt;li&gt;You have used &lt;code&gt;cli-upload&lt;/code&gt; option or &lt;code&gt;-o&lt;/code&gt; which is default to generate the output in a JSON formatted file instead of using &lt;code&gt;auto-upload&lt;/code&gt; option which will push the converted config directly to the NSX-ALB Controller. For example on netscalar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;python3 netscalar_converter.py -f ./ns.conf --vs_filter test-vs --controller_version &amp;#39;21.1.4&amp;#39; --cloud_name Default-Cloud --vrf Test -o ./test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;It might be that, you chose &lt;code&gt;cli-upload&lt;/code&gt; option because you wanted to modify the converted config before pushing it to the NSX-ALB controller.&lt;/li&gt;
+&lt;li&gt;Now, after appropriate modification to the config file you need an option to upload this config to the NSX-ALB Controller which the current converter tool is not providing. Though there is an option in the current converter to patch the converted config with a YAML formatted file containing all the changes you would like to make in the converted AVI config file after conversion and then use &lt;code&gt;auto-upload&lt;/code&gt; option in the same command to upload the patched config file to the controller.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;python3 netscalar_converter.py -f ./ns.conf --vs_filter test-vs --controller_version &amp;#39;21.1.4&amp;#39; --cloud_name Default-Cloud --vrf Test --patch test/patch.yaml -O auto-upload -c 2.2.2.2 -u username -p password -t tenant
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;You can use the above approach as well if you have prepared the patch.yaml file properly. But if you are manually changing the &lt;code&gt;ns-Output.json&lt;/code&gt; which is the output file after conversion in step-3 above inside &lt;code&gt;./test&lt;/code&gt; directory, and after modification you are planning to push it to the controller, you can use this &lt;a href=&#34;https://github.com/abhimukherjee91/network-automation-examples/blob/main/network-automation-examples/avi_config_upload.py&#34;&gt;script&lt;/a&gt; for this purpose.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;First of all, when you are trying to do this, you should already have avi.migrationtools or basically the entire &lt;code&gt;alb-sdk&lt;/code&gt; repository cloned to your current system. If not, the process for doing this in a &lt;code&gt;ubuntu&lt;/code&gt; machine is,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intall &lt;code&gt;python&lt;/code&gt;, &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;git&lt;/code&gt; in your system.&lt;/li&gt;
+&lt;li&gt;Using git clone the &lt;code&gt;alb-sdk&lt;/code&gt; repository to your local system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git clone https://github.com/vmware/alb-sdk.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Once you have a local copy of this repository, install the necessary modules to run the migration tools,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd alb-sdk
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;./pip_create_install.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Going back to the original topic of config file upload, please download the &lt;code&gt;avi_config_upload.py&lt;/code&gt; file from the link provided earlier. Run the script by providing the below options,&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;python3 avi_config_upload.py --f &amp;lt;absolute-path-to-json-AVI-config-file&amp;gt; -u &amp;lt;username&amp;gt; -p &amp;lt;password&amp;gt; -t &amp;lt;tanent&amp;gt; -c &amp;lt;controller_ip&amp;gt; --controller_version &amp;lt;controller_version&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For example, in my case,&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;python3 avi_config_upload.py --f ./test/ns-Output.json -u username -p password -t admin -c 2.2.2.2 --controller_version 21.1.4
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;####Sending Config to AVI Controller####
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;####Config Uploaded to Controller####
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, you have your Json formatted config uploaded to the NSX-ALB Controller.&lt;/p&gt;
+&lt;p&gt;Last but not the least, the user which you will be using to send the config to the controller, should at least have the role &lt;code&gt;Controller: Write Access&lt;/code&gt; under &lt;code&gt;Administration&lt;/code&gt; along with other roles required to configure the NSX-ALB objects under sections &lt;code&gt;Application&lt;/code&gt;, &lt;code&gt;Profiles&lt;/code&gt;, &lt;code&gt;Group and Script&lt;/code&gt;, &lt;code&gt;Security&lt;/code&gt; etc. For example the user I used is having the the below roles as write-access.
+&lt;img src=&#34;https://networkingwithabhi.github.io/images/User-Rols.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And we are done!!&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>NSX-V Interface Details Using Python: Explained</title>
       <link>https://networkingwithabhi.github.io/post/nsx-v-interface-details-using-python-explained/</link>
